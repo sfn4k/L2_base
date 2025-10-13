@@ -1,0 +1,159 @@
+// ката 1
+function hasTwoCubeSums(n) {
+	const pairs = [];
+  const limit = Math.floor(Math.cbrt(n));
+
+  for (let a = 1; a <= limit; a++) {
+    for (let b = a + 1; b <= limit; b++) {
+      if (a ** 3 + b ** 3 === n) {
+        pairs.push([a, b]);
+      }
+    }
+  }
+
+  return pairs.length >= 2;
+}
+// ката 2
+function whatCentury(year)
+{
+  let c = Math.ceil(year / 100);
+  let end = c % 10;
+  let lastTwo = c % 100;
+  
+  if (lastTwo === 11 || lastTwo === 12 || lastTwo === 13) {
+    return c + "th";
+  }
+  
+  if (end === 1) return c + "st";
+  if (end === 2) return c + "nd";
+  if (end === 3) return c + "rd";
+  
+  return c + "th";
+
+}
+// ката 3
+function primeFactors(n){
+    let result = '';
+  let num = n;
+  
+  for (let i = 2; i <= num; i++) {
+    let count = 0;
+    
+    while (num % i === 0) {
+      count++;
+      num /= i;
+    }
+    
+    if (count === 1) result += `(${i})`;
+    if (count > 1) result += `(${i}**${count})`;
+  }
+  
+  return result;
+}
+//ката 4
+function expandedForm(num) {
+  return num.toString()
+    .split('')
+    .map((digit, index, arr) => digit + '0'.repeat(arr.length - index - 1))
+    .filter(part => part[0] !== '0')
+    .join(' + ');
+}
+// ката 5
+function createPhoneNumber(numbers){
+  return "(" + numbers[0] + numbers[1] + numbers[2] + ") " + numbers[3] + numbers[4] + numbers[5] + "-" + numbers[6] + numbers[7] + numbers[8] + numbers[9];
+}
+// ката 6
+function domainName(url){
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", '');
+  return url.split('.')[0];
+}
+//ката 7
+function solution(str){
+  if (str === "") return [];
+  let arr = [];
+  for (let i = 0; i < str.length; i = i + 2) {
+    if (i + 1 < str.length) {
+      arr.push(str[i] + str[i+1]);
+    } else {
+      arr.push(str[i] + "_");
+    }
+  }
+  
+  return arr;
+
+}
+// ката 8
+Array.prototype.square = function() {
+  let a = [];
+  for(let i = 0; i < this.length; i++) { 
+    a.push(this[i] * this[i]);
+  }
+  return a;
+}
+
+Array.prototype.cube = function() {
+  let a = [];
+  for(let i = 0; i < this.length; i++) {  
+    a.push(this[i] * this[i] * this[i]);
+  }
+  return a;
+}
+
+Array.prototype.sum = function() {
+  let sum = 0;
+  for(let i = 0; i < this.length; i++) {
+    sum += this[i];
+  }
+  return sum;
+}
+
+Array.prototype.average = function() {
+  if (this.length === 0) return NaN; 
+  return this.sum() / this.length;
+}
+
+Array.prototype.even = function() {
+  let a = [];
+  for(let i = 0; i < this.length; i++) {
+    if(this[i] % 2 === 0) {
+      a.push(this[i]);
+    }
+  }
+  return a;
+}
+
+Array.prototype.odd = function() {
+  let a = [];
+  for(let i = 0; i < this.length; i++) {
+    if(this[i] % 2 !== 0) { 
+      a.push(this[i]);
+    }
+  }
+  return a;
+}
+// ката 9
+function wave(str){
+    let a = [];
+  
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === " ") 
+    {
+      continue;
+    }
+    let s = "";
+    for (let j = 0; j < str.length; j++) {
+      if (j === i) 
+      {
+        s += str[j].toUpperCase(); 
+      } 
+      else 
+      {
+        s += str[j]; 
+      }
+    }
+    a.push(s);
+  }
+  return a;
+}
